@@ -18,6 +18,14 @@ sudo apt autoremove -y
 ```
 sudo apt install -y git
 git --version
+
+
+git config --global user.name "Shafaat Khan"
+
+git config --global user.email "your_email@example.com"
+
+git config --list
+
 ```
 
 ### Step 2. Install Java
