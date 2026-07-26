@@ -90,3 +90,51 @@ Verify Docker:
 docker run hello-world
 docker compose version
 ```
+
+
+### Folder Structure
+
+```
+
+├── home/
+│   └── youruser/
+│       ├── Projects/
+│       │   ├── app1/
+│       │   ├── app2/
+│       │   ├── scripts/
+│       │   └── ...
+│       │
+│       ├── Documents/
+│       ├── Downloads/
+│       ├── Pictures/
+│       └── ...
+│
+├── srv/
+│   ├── docker/
+│   │   ├── compose/
+│   │   │   ├── immich/
+│   │   │   ├── jellyfin/
+│   │   │   ├── paperless/
+│   │   │   ├── homepage/
+│   │   │   └── ...
+│   │   │
+│   │   ├── data/
+│   │   │   ├── immich/
+│   │   │   ├── postgres/
+│   │   │   ├── jellyfin/
+│   │   │   └── ...
+│   │   │
+│   │   ├── backups/
+│   │   └── shared/
+│   │
+│   └── media/
+│       ├── movies/
+│       ├── tv/
+│       ├── music/
+│       └── photos/
+│
+├── opt/
+│   └── (optional manually installed software)
+│
+└── etc/
+```
