@@ -6,4 +6,12 @@
 sudo ./setup-srv.sh
 ```
 
+
+2. Run `setup-apps.sh`
+
+```
+./setup-apps.sh
+```
+
+
 #### Folder Structure

@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=info
+      # Add any other environment variables if needed (e.g., SIGNUPS_ALLOWED=false)
+    volumes:
+      - /srv/docker/data/vaultwarden:/data
+      - /srv/docker/data/vaultwarden/db:/db
+    ports:
+      - "8080:80"
