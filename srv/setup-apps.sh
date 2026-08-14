@@ -13,7 +13,7 @@ if ! docker ps --format '{{.Names}}' | grep -q '^vaultwarden$'; then
     cd /srv/docker/compose/vaultwarden
 
     echo "Starting Vaultwarden..."
-    docker-compose up -d
+    docker compose up -d
 else
     echo "Vaultwarden is already running."
 fi
@@ -40,7 +40,7 @@ if ! docker ps --format '{{.Names}}' | grep -q '^pihole$'; then
     cd /srv/docker/compose/pihole
 
     echo "Starting Pi-hole..."
-    docker-compose up -d
+    docker compose up -d
 else
     echo "Pi-hole is already running."
 fi

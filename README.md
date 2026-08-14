@@ -76,6 +76,7 @@ echo \
 ```
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+docker compose version
 ```
 Enable Docker and allow your user to run it without sudo:
 
@@ -93,6 +94,18 @@ docker run hello-world
 docker compose version
 ```
 
+### Step 6. Clone repo
+
+```sh
+mkdir -p ~/projects/home-server
+
+git clone https://github.com/shafaatali10/homeserver.git ~/projects/home-server
+```
+
+
+### Step 7. Setup Cloudflare Tunnel
+
+- Follow the instructions from Cloudflare dashboard
 
 ### Folder Structure
 
