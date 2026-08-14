@@ -39,7 +39,8 @@ javac --version
 ### Step 3. Install Node JS
 
 ```
-sudo apt install -y nodejs npm
+sudo apt install -y nodejs
+sudo apt install -y npm
 node --version
 npm --version
 ```

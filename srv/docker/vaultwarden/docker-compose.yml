@@ -7,6 +7,7 @@ services:
     restart: unless-stopped
     environment:
       - LOG_LEVEL=info
+      # - ADMIN_TOKEN= CHECK README
       # Add any other environment variables if needed (e.g., SIGNUPS_ALLOWED=false)
     volumes:
       - /srv/docker/data/vaultwarden:/data

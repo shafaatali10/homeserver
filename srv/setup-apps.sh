@@ -30,6 +30,9 @@ if ! docker ps --format '{{.Names}}' | grep -q '^pihole$'; then
     mv /etc/systemd/resolved.conf /etc/systemd/resolved.conf.bak
     cp ./docker/pihole/resolved.conf /etc/systemd/resolved.conf
 
+    sudo rm /etc/resolv.conf
+    echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf
+
     systemctl restart systemd-resolved
 
 
