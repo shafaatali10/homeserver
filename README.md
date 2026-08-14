@@ -55,6 +55,7 @@ pip3 --version
 ### Step 5. Install Docker
 Add new group
 ```
+# Might have to do this at last. 
 newgrp docker
 ```
 ```
