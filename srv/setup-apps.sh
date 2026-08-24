@@ -27,13 +27,12 @@ sudo mkdir -p /srv/docker/data/pihole/etc-dnsmasq.d
 # Check if the pihole container is already running
 if ! docker ps --format '{{.Names}}' | grep -q '^pihole$'; then
 
-    mv /etc/systemd/resolved.conf /etc/systemd/resolved.conf.bak
-    cp ./docker/pihole/resolved.conf /etc/systemd/resolved.conf
+    sudo cp ./docker/pihole/resolved.conf /etc/systemd/resolved.conf
 
     sudo rm /etc/resolv.conf
-    echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf
+    echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf >/dev/null
 
-    systemctl restart systemd-resolved
+    sudo systemctl restart systemd-resolved
 
 
     cp ./docker/pihole/docker-compose.yml /srv/docker/compose/pihole
