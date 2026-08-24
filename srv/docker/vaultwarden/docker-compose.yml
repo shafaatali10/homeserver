@@ -7,10 +7,21 @@ services:
     restart: unless-stopped
     environment:
       - LOG_LEVEL=info
-      # - ADMIN_TOKEN= CHECK README
-      # Add any other environment variables if needed (e.g., SIGNUPS_ALLOWED=false)
     volumes:
       - /srv/docker/data/vaultwarden:/data
-      - /srv/docker/data/vaultwarden/db:/db
     ports:
       - "8080:80"
+
+  vaultwarden-backup:
+    image: bruceforce/vaultwarden-backup:2.1.6
+    container_name: vaultwarden-backup
+    restart: unless-stopped
+    environment:
+      - CRON_TIME=0 3 * * *
+      - TIMESTAMP=true
+      - DELETE_AFTER=30
+      - BACKUP_ON_STARTUP=true
+      - TZ=Asia/Qatar
+    volumes:
+      - /srv/docker/data/vaultwarden:/data:ro
+      - /srv/docker/backups/vaultwarden:/backup
