@@ -20,7 +20,7 @@ sudo apt install -y git
 git --version
 
 
-git config --global user.name "Shafaat Khan"
+git config --global user.name "First Last"
 
 git config --global user.email "your_email@example.com"
 
