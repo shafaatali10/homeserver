@@ -45,6 +45,27 @@ node --version
 npm --version
 ```
 
+### Step 3.a) Upgrade NodeJS
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+```
+Reload your shell:
+
+```
+source ~/.bashrc
+```
+
+Install and activate Node.js 22:
+
+```
+nvm install 22
+nvm use 22
+nvm alias default 22
+
+```
+
+
+
 ### Step 4. Install Python 3
 ```
 sudo apt install -y python3 python3-pip python3-venv
