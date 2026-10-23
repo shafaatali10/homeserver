@@ -7,6 +7,7 @@ services:
     restart: unless-stopped
     environment:
       - LOG_LEVEL=info
+      - DOMAIN=https://vault.example.com
     volumes:
       - /srv/docker/data/vaultwarden:/data
     ports:

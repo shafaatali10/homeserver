@@ -1,0 +1,15 @@
+
+services:
+  tiddlywiki:
+    image: node:22-bookworm-slim
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - /srv/docker/data/tiddlywiki:/wiki
+    command: >
+      sh -c "
+        npm install --global tiddlywiki &&
+        test ! -f /wiki/tiddlywiki.info && tiddlywiki /wiki --init server &&
+        tiddlywiki /wiki --listen host=0.0.0.0 port=8000
+      "

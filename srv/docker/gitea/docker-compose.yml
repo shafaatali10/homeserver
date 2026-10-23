@@ -1,0 +1,18 @@
+services:
+
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea
+    restart: unless-stopped
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__service__DISABLE_REGISTRATION=true
+      - GITEA__ui__DEFAULT_THEME=gitea-dark
+    hostname: gitea
+    ports:
+      - 3000:3000 #webgui
+    expose:
+      - 3000
+    volumes:
+      - ${DOCKER_VOLUME_STORAGE:-/mnt/docker-volumes}/gitea/data:/data

@@ -2,44 +2,31 @@
 
 set -euo pipefail
 
-# For Vaultwarden
-mkdir -p /srv/docker/compose/vaultwarden
-mkdir -p /srv/docker/data/vaultwarden
-mkdir -p /srv/docker/data/vaultwarden/db
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+APPS_DIR="$SCRIPT_DIR/apps"
 
-# Check if the vaultwarden container is already running
-if ! docker ps --format '{{.Names}}' | grep -q '^vaultwarden$'; then
-    cp ./docker/vaultwarden/docker-compose.yml /srv/docker/compose/vaultwarden
-    cd /srv/docker/compose/vaultwarden
+run_app() {
+    local app=$1
+    "$APPS_DIR/$app.sh"
+}
 
-    echo "Starting Vaultwarden..."
-    docker compose up -d
-else
-    echo "Vaultwarden is already running."
+if (($# == 0)); then
+    set -- all
 fi
 
-
-# For Pi-hole
-sudo mkdir -p /srv/docker/compose/pihole
-sudo mkdir -p /srv/docker/data/pihole/etc-pihole
-sudo mkdir -p /srv/docker/data/pihole/etc-dnsmasq.d
-
-# Check if the pihole container is already running
-if ! docker ps --format '{{.Names}}' | grep -q '^pihole$'; then
-
-    sudo cp ./docker/pihole/resolved.conf /etc/systemd/resolved.conf
-
-    sudo rm /etc/resolv.conf
-    echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf >/dev/null
-
-    sudo systemctl restart systemd-resolved
-
-
-    cp ./docker/pihole/docker-compose.yml /srv/docker/compose/pihole
-    cd /srv/docker/compose/pihole
-
-    echo "Starting Pi-hole..."
-    docker compose up -d
-else
-    echo "Pi-hole is already running."
-fi
+case $1 in
+    all)
+        run_app vaultwarden
+        run_app pihole
+        run_app gitea
+        run_app nextcloud
+        run_app tiddlywiki
+        ;;
+    vaultwarden|pihole|gitea|nextcloud|tiddlywiki)
+        run_app "$1"
+        ;;
+    *)
+        printf 'Usage: %s [all|vaultwarden|pihole|gitea|nextcloud|tiddlywiki]\n' "$0" >&2
+        exit 1
+        ;;
+esac

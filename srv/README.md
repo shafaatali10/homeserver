@@ -13,6 +13,17 @@ sudo ./setup-srv.sh
 ./setup-apps.sh
 ```
 
+To set up only one app, pass its name:
+
+```sh
+./setup-apps.sh gitea
+./setup-apps.sh vaultwarden
+./setup-apps.sh pihole
+./setup-apps.sh nextcloud
+```
+
+Running without an argument is equivalent to `./setup-apps.sh all`.
+
 
 #### Vaultwarden Admin Setup
 Generate an Argon2 hash:
